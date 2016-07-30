@@ -21,7 +21,7 @@
   [species]
   (log/trace "find-species." species)
   (if (string? species)
-    (first (mc/find-maps database speciesColl {:ScientificName species}))
+    (first (mc/find-maps database speciesColl {:ScientificName (clojure.string/capitalize species)}))
     (if-let [s (:ScientificName species)]
       (recur s)
       (if-let [s1 (get species "ScientificName")]
@@ -35,7 +35,6 @@
     )
   )
 
-;; TODO test
 (defn find-geo
   "Finds a geolocation object, returns nil if not found. Takes a map"
   [gMap]
@@ -55,6 +54,7 @@
   )
 
 (find-species "Accipiter cirrocephalus")
+(find-species "accipiter cirrocephalus")
 (find-species {:ScientificName "Accipiter cirrocephalus"})
 (find-species {"ScientificName" "Accipiter cirrocephalus"})
 (find-species "Doesnt exist")
@@ -124,30 +124,13 @@
       )
   )
 
-
-(upsert-geolocation-from-url "http://environment.ehp.qld.gov.au/species/?op=getspeciesbyid&taxonid=26902")
-
 (defn refresh-geolocation
   "Scrapes all species in the database and add any database geolocation to the local database from the external database"
   []
   (->> (mc/find-maps database speciesColl)
        (map :SpeciesProfileUrl)
-       (map upsert-geolocation-from-url)
+       (pmap upsert-geolocation-from-url)
        )
   )
 
-(refresh-geolocation)
 
-(map dissoc (mc/find-maps database "testa" {}) (repeat :_id))
-(mc/insert database "testa" {:a 5 :b (.toString (java.time.Instant/now))})
-
-(mc/find-maps database speciesColl {:ScientificName "Accipiter cirrocephalus"})
-
-(json/read-str
-  "{
-   \"TaxonID\": 1742,
-   \"ScientificName\": \"Accipiter cirrocephalus\",
-   \"AcceptedCommonName\": \"collared sparrowhawk\",
-   \"SpeciesProfileUrl\": \"http://environment.ehp.qld.gov.au/species/?op=getspeciesbyid&taxonid=1742\"
-   }"
-  )
