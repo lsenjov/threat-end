@@ -32,6 +32,9 @@
   (GET "/api/species/nearby/:xPos/:yPos/:radiusInMetres/"
        {{xPos :xPos yPos :yPos radius :radiusInMetres} :params}
        (json/write-str (api/get-all-nearby xPos yPos radius)))
+  (GET "/api/addsighting/:session/:species/:xPos/:yPos/"
+       {{xPos :xPos yPos :yPos session :session species :species} :params}
+       (api/add-sighting session species xPos yPos))
   (route/not-found "Not Found"))
 
 (def app

@@ -184,6 +184,26 @@
     )
   )
 
+(defn add-sighting
+  "Adds a sighting of an animal"
+  [^String session ^String species ^String x ^String y]
+  (let [{uName :username} (get-user-by-session session)]
+    (if uName
+      (try (db/upsert-geolocation-with-user
+             uName
+             species
+             (Double/parseDouble x)
+             (Double/parseDouble y)
+             )
+           (catch NumberFormatException e {:status "error" :message "Invalid location"})
+           )
+      {:status "error" :message "Invalid session"}
+      )
+    )
+  )
+
+
+
 (get-living-atlas-by-species "Paracanthurus hepatus")
 
 

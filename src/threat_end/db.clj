@@ -74,6 +74,26 @@
       )
   )
 
+(defn upsert-geolocation-with-user
+  "Inserts a sighting to the database from a user. Returns a status map"
+  [^String uName ^String species ^Double x ^Double y]
+  (log/trace "Adding geolocation for species:" species "details:" uName x y)
+  (if (find-species species)
+    ;; Species exists
+    (if (find-geo {:x x :y y :species species :foundBy uName})
+      (json/write-str {:status "error" :message "Already added to database"})
+      ;; Species exists, hasn't been added to database
+      (do
+        (log/trace "Inserting location to database")
+        (mc/insert database locationColl {:x x :y y :species species :foundBy uName})
+        (json/write-str {:status "okay" :message "Added sighting to database"})
+        )
+      )
+    (json/write-str {:status "error" :message "Invalid species"})
+    )
+  )
+    
+
 (defn- upsert-geolocation
   [{{coords "coordinates"} "geometry" :as gMap}]
   (log/trace "Upserting geolocation:" gMap)
