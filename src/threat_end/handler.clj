@@ -12,8 +12,8 @@
 
 (defroutes app-routes
   (GET "/api/new-user/:username/:password/:email/:region/"
-       {{uName :username pass :password} :params}
-       (json/write-str (api/create-user uName pass)))
+       {{uName :username pass :password email :email region :region} :params}
+       (json/write-str (api/create-user uName pass email region)))
   (GET "/api/login/:username/:password/"
        {{uName :username pass :password} :params}
        (json/write-str (api/user-login uName pass)))
