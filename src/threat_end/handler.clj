@@ -35,6 +35,7 @@
   (GET "/api/addsighting/:session/:species/:xPos/:yPos/"
        {{xPos :xPos yPos :yPos session :session species :species} :params}
        (api/add-sighting session species xPos yPos))
+  (GET "/api/start-scrape/")
   (route/not-found "Not Found"))
 
 (def app
