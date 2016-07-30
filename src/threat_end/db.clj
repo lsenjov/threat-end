@@ -144,3 +144,15 @@
        (pmap upsert-geolocation-from-url)
        )
   )
+
+;; If this hasn't been completely loaded yet, means it isthe first time it's been loaded this session.
+;; Begin scraping data into the database
+(if (resolve 'started-scrape)
+  nil
+  (do (future (refresh-data)
+              (refresh-geolocation))
+      nil
+      )
+  )
+
+(def started-scrape true)
