@@ -53,14 +53,6 @@
   sMap
   )
 
-(find-species "Accipiter cirrocephalus")
-(find-species "accipiter cirrocephalus")
-(find-species {:ScientificName "Accipiter cirrocephalus"})
-(find-species {"ScientificName" "Accipiter cirrocephalus"})
-(find-species "Doesnt exist")
-
-(refresh-data)
-
 (defn refresh-data
   "Scrapes and uploads data directly to the database. Will take a while."
   []
@@ -132,5 +124,3 @@
        (pmap upsert-geolocation-from-url)
        )
   )
-
-
