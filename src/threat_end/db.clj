@@ -148,14 +148,17 @@
 ;; If this hasn't been completely loaded yet, means it isthe first time it's been loaded this session.
 ;; Begin scraping data into the database
 
+(def started-scrape false)
+
 (defn start-scrape
   []
-  (if (resolve 'started-scrape)
-    nil
+  (if started-scrape
+    "Already started"
     (do (future (refresh-data)
                 (refresh-geolocation))
         (def started-scrape true)
-        nil
+        (log/info "Scraping has begun!")
+        "Beginning Scraping"
         )
     )
   )
