@@ -1,15 +1,38 @@
 (ns threat-end.handler
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
-            [ring.middleware.defaults :refer [wrap-defaults site-defaults]]
+            [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
             [taoensso.timbre :as log]
+            [threat-end.api :as api]
+            [threat-end.db :as db]
+            [clojure.data.json :as json]
             ))
 
 (log/set-level! :trace)
 
 (defroutes app-routes
-  (GET "/" [] "Hello World")
+  (GET "/api/new-user/:username/:password/:email/:region/"
+       {{uName :username pass :password} :params}
+       (json/write-str (api/create-user uName pass)))
+  (GET "/api/login/:username/:password/"
+       {{uName :username pass :password} :params}
+       (json/write-str (api/user-login uName pass)))
+  (GET "/api/useraccount/:session/"
+       {{session :session} :params}
+       (json/write-str (api/get-user session)))
+  (GET "/api/addfriend/:session/:friend/"
+       {{session :session friend :friend} :params}
+       (json/write-str (api/add-friend session friend)))
+  (GET "/api/species/scientific/:speciesName/"
+       {{speciesName :speciesName} :params}
+       (json/write-str (api/find-species-by-scientific-name speciesName)))
+  (GET "/api/species/atlas/:speciesName/"
+       {{speciesName :speciesName} :params}
+       (api/get-living-atlas-by-species speciesName))
+  (GET "/api/species/nearby/:xPos/:yPos/:radiusInMetres/"
+       {{xPos :xPos yPos :yPos radius :radiusInMetres} :params}
+       (json/write-str (api/get-all-nearby xPos yPos radius)))
   (route/not-found "Not Found"))
 
 (def app
-  (wrap-defaults app-routes site-defaults))
+  (wrap-defaults app-routes api-defaults))
