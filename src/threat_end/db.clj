@@ -96,7 +96,6 @@
 
 (defn- upsert-geolocation
   [{{coords "coordinates"} "geometry" :as gMap}]
-  (log/trace "Upserting geolocation:" gMap)
   (log/trace "Coords is:" coords)
   (let [newG (-> gMap
                  (assoc :x (first coords))
@@ -133,15 +132,15 @@
       json/read-str
       (get "features")
       ((partial map upsert-geolocation))
+      doall
       )
   )
 
 (defn refresh-geolocation
   "Scrapes all species in the database and add any database geolocation to the local database from the external database"
   []
-  (->> (mc/find-maps database speciesColl)
-       (map :SpeciesProfileUrl)
-       (pmap upsert-geolocation-from-url)
+  (->> (mc/find-maps database speciesColl {} {:SpeciesProfileUrl 1})
+       (pmap (comp upsert-geolocation-from-url :SpeciesProfileUrl))
        )
   )
 
@@ -154,8 +153,8 @@
   []
   (if started-scrape
     "Already started"
-    (do (future (refresh-data)
-                (refresh-geolocation))
+    (do (future (doall (refresh-data))
+                (doall (refresh-geolocation)))
         (def started-scrape true)
         (log/info "Scraping has begun!")
         "Beginning Scraping"
