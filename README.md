@@ -1,4 +1,4 @@
-# threat-end
+# Threat.End
 
 A project for govhack 2016: gamifying species education, tagging, and geolocation to involve citizens with environment improvement and data gathering.
 
@@ -6,6 +6,8 @@ A project for govhack 2016: gamifying species education, tagging, and geolocatio
 
 You will need [Leiningen][] 2.0.0 or above installed.
 [leiningen]: https://github.com/technomancy/leiningen
+
+You will also need mongodb installed
 
 ## Running
 
