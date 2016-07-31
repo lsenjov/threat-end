@@ -31,6 +31,7 @@
         )
   )
 
+;; Not used for mockup
 (defn login
   []
   (html [:html
@@ -49,7 +50,6 @@
          ]
         )
   )
-
 (defn register
   []
   (html [:html
