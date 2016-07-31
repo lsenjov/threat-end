@@ -16,7 +16,7 @@
          [:body
           [:div {:class "container"}
            logo
-           [:div {:class "container-sub"} "Threat End"]
+           [:div {:class "container-sub"} [:h1 "Threat End"]]
            [:div {:class "form"}
             [:input {:type "text" :name "username" :placeholder "username"}]
             ]
@@ -104,7 +104,14 @@
           [:div {:class "container"}
            [:div {:class "container-sub"}
             [:a {:href "./api/species/nearby/152.7528/-27.6188/1000/"}
-             "Show all nearby species sightings within 1000 metres of a coordinate"
+             "Show all nearby species sightings within 1000 metres of a coordinate" [:br]
+             "/threatend/api/species/nearby/:xcoord/:ycoord/:distMetres/"
+             ]
+            ]
+           [:div {:class "container-sub"}
+            [:a {:href "./api/species/scientific/manorina melanocephala/"}
+             "Get json data for a single species" [:br]
+             "/threatend/api/species/scientific/:speciesName/"
              ]
             ]
            ]

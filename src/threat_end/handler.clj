@@ -40,8 +40,8 @@
 
   ;; Demo stuff
   (GET "/index" [] (web/index))
-  (GET "/login" [] (web/login))
   (GET "/forage" [] (web/forage))
+  (GET "/apilinks" [] (web/api-examples))
 
   (GET "/" [] (resp/redirect "index"))
   (route/resources "/")

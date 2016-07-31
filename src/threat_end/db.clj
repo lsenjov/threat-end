@@ -21,7 +21,7 @@
   [species]
   (log/trace "find-species." species)
   (if (string? species)
-    (first (mc/find-maps database speciesColl {:ScientificName (clojure.string/capitalize species)}))
+    (dissoc (first (mc/find-maps database speciesColl {:ScientificName (clojure.string/capitalize species)})) :_id)
     (if-let [s (:ScientificName species)]
       (recur s)
       (if-let [s1 (get species "ScientificName")]
