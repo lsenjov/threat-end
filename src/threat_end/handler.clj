@@ -43,7 +43,7 @@
   (GET "/login" [] (web/login))
   (GET "/forage" [] (web/forage))
 
-  (GET "/" [] (resp/redirect "/index"))
+  (GET "/" [] (resp/redirect "index"))
   (route/resources "/")
   (route/not-found "Not Found"))
 
