@@ -80,19 +80,40 @@
   (html [:html
          [:head css]
          [:body
-          [:div {:class "container-login"}
            [:div {:class "container"}
-            [:div {:class "container-sub"} "Forage"]
-            [:div {:class "container-sub"} "Animal News"]
-            [:div {:class "container-sub"} "You have a new challenge"]
-            [:div {:class "container-sub"} "Suggested Species"]
+            [:div {:class "view-box"}
+             [:div {:class "view-head"}
+              "Forage"]
+             ]
+            [:div {:class "news-img"}
+             [:div [:img {:src "img/historic.png" :class "logo"}]]
+             ]
+            [:div {:class "container-sub"}
+             [:div {:class "news-relationship"}
+              "ANIMALIA / MACROPODIDAE"
+              ]
+             [:div {:class "news-story"}
+              "Historic rock wallaby..."
+              ]
+             ]
+            [:div {:class "container-sub"}
+             [:div {:class "challenge-box"}
+              [:div {:class "challenge-message"}
+               [:h2 "Challenge"]
+               "You have a new challenge for the Petrogale"
+               ]
+              [:div {:class "challenge-link"}
+               ]
+              ]
+             ]
+            [:div {:class "container-sub"}
+             "Suggested Species"]
             [:a {:href "apilinks"}
              [:div {:class "container-sub"} "Api Demonstrations"]
              ]
             ]
            ]
           ]
-         ]
         )
   )
 
