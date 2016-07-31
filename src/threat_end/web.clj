@@ -15,15 +15,15 @@
          [:head css]
          [:body
           [:div {:class "container"}
-           [:div {:class "header"} "Threat End"]
+           [:div {:class "container-sub"} "Threat End"]
            logo
-           [:div
-            [:a {:class "prettyLink" :href "/login"}
-             "Login"]
+           [:input {:type "text" :name "username" :class "form"} "Username"]
+           [:input {:type "text" :name "password" :class "form"} "Password"]
+           [:a {:class "prettyLink" :href "/forage"}
+            [:div {:class "but-go"} "Login"]
             ]
-           [:div
-            [:a {:class "prettyLink" :href "/register"}
-             "Register"]
+           [:a {:class "prettyLink" :href "/forage"}
+            [:div {:class "but-stop"} "Register"]
             ]
            ]
           ]
@@ -37,7 +37,7 @@
          [:head css]
          [:body
           [:div {:class "container"}
-           [:div {:class "header"} "Login"]
+           [:div {:class "container-sub"} "Login"]
            logo
            [:form {:action "/forage" :method "get"}
             [:input {:type "text" :name "username"} "Username"]
@@ -56,7 +56,7 @@
          [:head css]
          [:body
           [:div {:class "container"}
-           [:div {:class "header"} "Login"]
+           [:div {:class "container-sub"} "Login"]
            logo
            [:form {:action "/forage" :method "get"}
             [:input {:type "text" :name "username"} "Username"]
@@ -77,10 +77,10 @@
          [:head css]
          [:body
           [:div {:class "container"}
-           [:div {:class "header"} "Forage"]
-           [:div {:class "news"} "Animal News"]
-           [:div {:class "challenges"} "You have a new challenge"]
-           [:div {:class "suggestedSpecies"} "Suggested Species"]
+           [:div {:class "container-sub"} "Forage"]
+           [:div {:class "container-sub"} "Animal News"]
+           [:div {:class "container-sub"} "You have a new challenge"]
+           [:div {:class "container-sub"} "Suggested Species"]
            
            ]
           ]
