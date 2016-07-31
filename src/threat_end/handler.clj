@@ -7,6 +7,7 @@
             [threat-end.api :as api]
             [threat-end.db :as db]
             [clojure.data.json :as json]
+            [threat-end.web :as web]
             ))
 
 (log/set-level! :trace)
@@ -37,7 +38,11 @@
        {{xPos :xPos yPos :yPos session :session species :species} :params}
        (api/add-sighting session species xPos yPos))
   (GET "/api/startscrape/" [] (db/start-scrape))
-  (GET "/" [] (resp/redirect "/index.html"))
+
+  ;; Demo stuff
+  (GET "/index" [] (web/index))
+
+  (GET "/" [] (resp/redirect "/index"))
   (route/resources "/")
   (route/not-found "Not Found"))
 
