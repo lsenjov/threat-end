@@ -41,6 +41,8 @@
 
   ;; Demo stuff
   (GET "/index" [] (web/index))
+  (GET "/login" [] (web/login))
+  (GET "/forage" [] (web/forage))
 
   (GET "/" [] (resp/redirect "/index"))
   (route/resources "/")
