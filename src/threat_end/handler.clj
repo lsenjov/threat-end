@@ -2,6 +2,7 @@
   (:require [compojure.core :refer :all]
             [compojure.route :as route]
             [ring.middleware.defaults :refer [wrap-defaults api-defaults]]
+            [ring.util.response :as resp]
             [taoensso.timbre :as log]
             [threat-end.api :as api]
             [threat-end.db :as db]
@@ -36,6 +37,8 @@
        {{xPos :xPos yPos :yPos session :session species :species} :params}
        (api/add-sighting session species xPos yPos))
   (GET "/api/startscrape/" [] (db/start-scrape))
+  (GET "/" [] (resp/redirect "/index.html"))
+  (route/resources "/")
   (route/not-found "Not Found"))
 
 (def app

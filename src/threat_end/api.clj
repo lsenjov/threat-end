@@ -172,6 +172,7 @@
      ]
     (-> r
         (#(do (log/trace "Result:" %) %))
+        (#(do (log/trace "Keys:" (sort (keys %))) %))
         (get "guid")
         (#(do (log/trace "Getting guid:" %) %))
         ((partial str "http://bie.ala.org.au/ws/species/"))
@@ -202,11 +203,3 @@
     )
   )
 
-
-
-(get-living-atlas-by-species "Paracanthurus hepatus")
-
-
-(get-local-species 152.9 -27.4 (metres-to-degrees 10000))
-(get-all-nearby "152.9" "-27.4" "10000")
-(map (comp :species find-species-by-scientific-name) (get-local-species 152.75 -27.61 (metres-to-degrees 10000)))

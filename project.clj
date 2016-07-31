@@ -13,8 +13,6 @@
                  [hiccup "1.0.5"]
                  ;; MongoDB
                  [com.novemberain/monger "3.0.2"]
-                 ;; Scraping http
-                 [clj-http "2.2.0"]
                  ]
   :plugins [[lein-ring "0.9.7"]]
   :ring {:handler threat-end.handler/app}
