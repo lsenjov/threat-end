@@ -15,8 +15,8 @@
          [:head css]
          [:body
           [:div {:class "container"}
-           [:div {:class "container-sub"} "Threat End"]
            logo
+           [:div {:class "container-sub"} "Threat End"]
            [:div {:class "form"}
             [:input {:type "text" :name "username" :placeholder "username"}]
             ]
@@ -80,13 +80,15 @@
   (html [:html
          [:head css]
          [:body
-          [:div {:class "container"}
-           [:div {:class "container-sub"} "Forage"]
-           [:div {:class "container-sub"} "Animal News"]
-           [:div {:class "container-sub"} "You have a new challenge"]
-           [:div {:class "container-sub"} "Suggested Species"]
-           [:a {:href "apilinks"}
-            [:div {:class "container-sub"} "Api Demonstrations"]
+          [:div {:class "container-login"}
+           [:div {:class "container"}
+            [:div {:class "container-sub"} "Forage"]
+            [:div {:class "container-sub"} "Animal News"]
+            [:div {:class "container-sub"} "You have a new challenge"]
+            [:div {:class "container-sub"} "Suggested Species"]
+            [:a {:href "apilinks"}
+             [:div {:class "container-sub"} "Api Demonstrations"]
+             ]
             ]
            ]
           ]
