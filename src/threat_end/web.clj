@@ -17,8 +17,12 @@
           [:div {:class "container"}
            [:div {:class "container-sub"} "Threat End"]
            logo
-           [:input {:type "text" :name "username" :class "form" :placeholder "username"}]
-           [:input {:type "text" :name "password" :class "form" :placeholder "password"}]
+           [:div {:class "form"}
+            [:input {:type "text" :name "username" :placeholder "username"}]
+            ]
+           [:div {:class "form"}
+            [:input {:type "text" :name "password" :placeholder "password"}]
+            ]
            [:a {:class "prettyLink" :href "forage"}
             [:div {:class "but-go"} "Login"]
             ]
@@ -83,6 +87,23 @@
            [:div {:class "container-sub"} "Suggested Species"]
            [:a {:href "apilinks"}
             [:div {:class "container-sub"} "Api Demonstrations"]
+            ]
+           ]
+          ]
+         ]
+        )
+  )
+
+(defn api-examples
+  []
+  (html [:html
+         [:head css]
+         [:body
+          [:div {:class "container"}
+           [:div {:class "container-sub"}
+            [:a {:href "./api/species/nearby/152.7528/-27.6188/1000/"}
+             "Show all nearby species sightings within 1000 metres of a coordinate"
+             ]
             ]
            ]
           ]
