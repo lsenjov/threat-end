@@ -9,15 +9,86 @@ body {
 /*Container*/
 
 .container {
-	background: #ffffff;
 	width: 100%;
 	max-width: 320px;
 	margin: 0px;
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
 }
 
 .container-sub {
 	width: 100%;
 	padding: 10px;
+}
+
+.container-login {
+	height: 100%;
+	vertical-align: middle;
+	
+}
+
+.container h1 {
+	color: white;
+	font-size: 30px;
+	
+}
+
+/*Form*/
+
+.form {
+	width: 100%;
+	margin-bottom: 20px;
+}
+
+
+input[type="text"] {
+	width: 100%;
+	line-height: 40px;
+	text-align: center;
+	font-size: 21px;
+	color: white;
+	height: 45px;
+	background-color: #282828;
+	
+}
+
+
+.but-go {
+	width: 100%;
+	background-color: #4A2470;
+	height: 40px;
+	margin-top: 20px;
+	text-align: center;
+	font-family: Lato-Bold;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-transform: uppercase; 
+	vertical-align: middle;
+	line-height: 40px;
+	text-decoration: none;
+}
+
+.but-stop {
+	width: 100%;
+	background-color: #928F90;
+	height: 40px;
+	margin-top: 20px;
+	text-align: center;
+	font-family: Lato-Bold;
+	font-size: 18px;
+	color: #FFFFFF;
+	text-transform: uppercase; 
+	vertical-align: middle;
+	line-height: 40px;
+	text-decoration: none;
+}
+
+
+.logo {
+	margin: auto;
+	display: block;
+	width: 40%;
 }
 
 /*Heading & View*/
@@ -62,6 +133,38 @@ body {
 	padding: 5px;
 }
 
+.forage {
+	background-image: url(/img/forage.png);
+	background-size: 45px, 45px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center; 
+}
+
+.tracking {
+	background-image: url(/img/tracking.png);
+	background-size: 45px, 45px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center;
+}
+
+.profile {
+	background-image: url(/img/profile.png);
+	background-size: 45px, 45px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center;
+}
+
+.friends {
+	background-image: url(/img/friends.png);
+	background-size: 45px, 45px;
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+    background-position: center;
+}
+
 /*forage*/
 /**********************************/
 
@@ -89,6 +192,42 @@ body {
 	font-family: Lato-Bold;
 	font-size: 12px;
 	color: #FFFFFF;
+}
+
+.news-story {
+	background: #ffffff;
+	margin: 0;
+	padding: 10px;
+}
+
+/*Challenge*/
+
+.challenge-box {
+	width: 100%;
+	max-width: 320px;
+	margin: 0;
+	padding: 10px;
+}
+
+.challenge-message h2 {
+	font-family: Lato-Bold;
+	font-size: 18px;
+	color: #FFFFFF;
+}
+
+.challenge-message {
+	font-family: Lato-Regular;
+	font-size: 12px;
+	color: #FFFFFF;
+	background: #4A2470;
+	border: 1px solid #FFFFFF;
+}
+
+.challenge-link {
+	width: 60px;
+	background: #4A2470;
+	border: 1px solid #FFFFFF;
+	height: 60px;
 }
 
 
