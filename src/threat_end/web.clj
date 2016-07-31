@@ -17,8 +17,8 @@
           [:div {:class "container"}
            [:div {:class "container-sub"} "Threat End"]
            logo
-           [:input {:type "text" :name "username" :class "form"} "Username"]
-           [:input {:type "text" :name "password" :class "form"} "Password"]
+           [:input {:type "text" :name "username" :class "form" :placeholder "username"}]
+           [:input {:type "text" :name "password" :class "form" :placeholder "password"}]
            [:a {:class "prettyLink" :href "/forage"}
             [:div {:class "but-go"} "Login"]
             ]
@@ -81,7 +81,9 @@
            [:div {:class "container-sub"} "Animal News"]
            [:div {:class "container-sub"} "You have a new challenge"]
            [:div {:class "container-sub"} "Suggested Species"]
-           
+           [:a {:href "/apilinks"}
+            [:div {:class "container-sub"} "Api Demonstrations"]
+            ]
            ]
           ]
          ]
